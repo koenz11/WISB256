@@ -52,6 +52,7 @@ for prime in primeList:
     file.write(str(prime) + '\n')
 
 print('Found', len(primeList), 'Prime numbers smaller than', highestNr, 'in', T2 - T1, 'sec.')
+print('--------------------------------------------')
 
 
 '''
