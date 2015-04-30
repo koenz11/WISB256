@@ -27,11 +27,11 @@ primeFormula = lastPrime / lastLog
 twinFormula = 2* constant* lastPrime / (lastLog*lastLog)
 
 print('Largest Prime =', lastPrime)
-print('--------------------------------')
+print('----------------------------------')
 print('pi(N)         =', primeCount)
 print('N/Log(N)      =', primeFormula)
 print('ratio         =', primeCount/primeFormula)
-print('--------------------------------')
+print('----------------------------------')
 print('pi_2(N)       =', twinCount)
 print('2CN/Log(N)^2  =', twinFormula)
 print('ratio         =', twinCount/twinFormula)
