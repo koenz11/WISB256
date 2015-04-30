@@ -2,9 +2,7 @@
 
 import sys
 import time
-import math
 import Sieve
-    
 arguments = sys.argv
 
 highestNr = int(sys.argv[1])
@@ -12,7 +10,7 @@ fileName = sys.argv[2]
 #/////////
 
 T1 = time.perf_counter()
-primeList = Sieve.Eratostheses(highestNr)
+primeList = Sieve.Sundaram(highestNr)
 T2 = time.perf_counter()
 
 file = open(fileName, 'w')
