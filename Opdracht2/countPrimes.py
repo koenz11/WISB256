@@ -8,7 +8,7 @@ fileName = sys.argv[1]
 
 file = open(fileName, 'r')
 
-lastPrime = 0
+lastPrime = -1
 primeCount = 0
 twinCount = 0
 #count all the primes
