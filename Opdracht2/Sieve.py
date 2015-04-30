@@ -21,8 +21,25 @@ def Eratostheses(n):
     
 def Sundaram(n):
     highestNr = int((n-1)*0.5 + 1) # because you multiply everything by 2 and add 1, you need only go to (n-1)/2 to get all primes below n
-    numberList = range(1, highestNr) 
+    
+    removeList = [False]*(highestNr + 1)
+    for i in range(1, highestNr):
+        for j in range(1, highestNr):
+            pos = i + j + 2*i*j
+            if(pos) > highestNr:
+                break
+            else:
+                removeList[pos] = True
+                
+    i = 1
+    numberList = [2]
+    while i < len(removeList):
+        if not removeList[i]:
+            numberList.append(2*i+1)
+        i += 1
+    
+    
     #calculate all numbers that should be removed
-    removeList = [(i + j + 2*i*j) for i, j in itertools.product(range(1, highestNr), range(1, highestNr)) if (i + j + 2*i*j) < highestNr]
-    numberList= [2*y+1 for y in numberList if (y not in removeList)]
-    return [2] + numberList
+    #removeList = [(i + j + 2*i*j) for i, j in itertools.product(range(1, highestNr), range(1, highestNr)) if (i + j + 2*i*j) < highestNr]
+    #numberList= [2*y+1 for y in numberList if (y not in removeList)]
+    return numberList
