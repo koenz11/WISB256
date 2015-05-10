@@ -3,7 +3,7 @@ import sys
 import math
 
 def drop_needle(L):
-    startX = random.random() + 1
+    startX = random.random() + L 
     #startY = random.random()
     angle = random.vonmisesvariate(0,0)
     
@@ -17,12 +17,15 @@ def drop_needle(L):
 #//////////arguments
 arguments = sys.argv
 
+if len(sys.argv) < 3:
+    print("Use: estimate_pi.py N L")
+    exit()
+
 matches = int(sys.argv[1])
 length = abs(float(sys.argv[2]))
-'''
-if length > 1:
-    print("AssertionError: L should be smaller then 1")
-'''
+
+#assert length < 1, "L should be smaller then 1"
+
 if len(sys.argv) > 3:
     seed = int(sys.argv[3])
     random.seed(seed)
