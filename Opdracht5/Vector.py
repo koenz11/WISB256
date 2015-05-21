@@ -19,7 +19,7 @@ class Vector:
         return returnString
     
     
-    def lincom(self, other, alpha, beta):
+    def lincomb(self, other, alpha, beta):
         data = self.data.copy()
         for x in range(len(data)):
             data[x] = self.data[x]*alpha
@@ -50,8 +50,8 @@ def GrammSchmidt(vectorList):
     for x in range(1, len(vectorList)):
         projVector = Vector(len(u[0].data), 0)
         for k in range(0, len(u)):
-            projVector = projVector.lincom(proj(u[k], vectorList[x]), 1, 1)
-        newVector = vectorList[x].lincom(projVector, 1, -1)
+            projVector = projVector.lincomb(proj(u[k], vectorList[x]), 1, 1)
+        newVector = vectorList[x].lincomb(projVector, 1, -1)
         u.append(newVector.scalar(1/newVector.norm()))
     return u
 
@@ -60,4 +60,3 @@ def proj(vector1, vector2):
     above = vector2.inner(vector1)
     below = vector1.inner(vector1)
     return vector1.scalar(above/below)
-
