@@ -1,14 +1,17 @@
 import math
+from array import array
 
 class Vector:
-    data = []
+    data = array("d", [])
     def __init__(self, n, elements = None):
         if elements == None:
-            self.data = [0]*n
+            self.data = array("d", [0]*n)
         elif isinstance(elements, list):
+            self.data = array("d", elements)
+        elif isinstance(elements, array):
             self.data = elements
         else:
-            self.data = [elements]*n
+            self.data = array("d", [elements]*n)
     
     def __str__(self):
         returnString = ""
@@ -20,7 +23,7 @@ class Vector:
     
     
     def lincomb(self, other, alpha, beta):
-        data = self.data.copy()
+        data = self.data[:]
         for x in range(len(data)):
             data[x] = self.data[x]*alpha
             if not other == None:
@@ -29,7 +32,7 @@ class Vector:
         
     
     def scalar(self, alpha):
-        return self.lincom(None, alpha, 0)
+        return self.lincomb(None, alpha, 0)
     
     def inner(self, other):
         value = 0
