@@ -1,6 +1,5 @@
 from scipy.integrate import odeint
 from numpy import arange
-import random
 
 class Lorenz:
     def __init__(self, startValues, sigma = 10, rho = 28, betta = 8/3):
