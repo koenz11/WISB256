@@ -4,7 +4,7 @@ from numpy import arange
 from numpy import array
 
 class Lorenz:
-    def __init__(self, startValues, sigma = 10, rho = 28, betta = 8/3):
+    def __init__(self, startValues, sigma = 10, rho = 28, betta = float(8)/float(3)):
         self.startValues = startValues
         self.sigma = sigma
         self.rho = rho
@@ -23,7 +23,9 @@ class Lorenz:
         
     def df(self, u):
         [x, y, z] = u
-        jacobian = array([[self.sigma, self.sigma, 0], [self.rho-z, -1, -x], [y, x, -self.betta]])
+        #jacobian = array([[self.sigma, self.sigma, 0], [self.rho-z, -1, -x], [y, x, -self.betta]])
+        jacobian = array([[self.sigma, self.rho-z, y], [self.sigma, -1, x], [0, -x, -self.betta]])
+        #print(jacobian)
         return jacobian
         
 
@@ -37,3 +39,4 @@ class Lorenz:
                 return False
         
         return True
+        
