@@ -35,7 +35,7 @@ class Lorenz:
         #print(eigenvalues)
         
         for value in eigenvalues[0]:
-            if value > 0:
+            if value >= 0:
                 return False
         
         return True
