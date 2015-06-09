@@ -1,5 +1,7 @@
 from scipy.integrate import odeint
+from scipy.linalg import eig
 from numpy import arange
+from numpy import array
 
 class Lorenz:
     def __init__(self, startValues, sigma = 10, rho = 28, betta = 8/3):
@@ -18,3 +20,20 @@ class Lorenz:
         
         vector = odeint(self.LorenzFunc, self.startValues, tijdstappen) 
         return vector
+        
+    def df(self, u):
+        [x, y, z] = u
+        jacobian = array([[self.sigma, self.sigma, 0], [self.rho-z, -1, -x], [y, x, -self.betta]])
+        return jacobian
+        
+
+    def isStable(self, u):
+        eigenvalues = eig(self.df(u))
+        
+        #print(eigenvalues)
+        
+        for value in eigenvalues[0]:
+            if value > 0:
+                return False
+        
+        return True
