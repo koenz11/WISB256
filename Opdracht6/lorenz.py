@@ -23,8 +23,7 @@ class Lorenz:
         
     def df(self, u):
         [x, y, z] = u
-        #jacobian = array([[self.sigma, self.sigma, 0], [self.rho-z, -1, -x], [y, x, -self.betta]])
-        jacobian = array([[self.sigma, self.rho-z, y], [self.sigma, -1, x], [0, -x, -self.betta]])
+        jacobian = array([[-self.sigma, self.rho-z, y], [self.sigma, -1, x], [0, -x, -self.betta]])
         #print(jacobian)
         return jacobian
         
@@ -32,7 +31,7 @@ class Lorenz:
     def isStable(self, u):
         eigenvalues = eig(self.df(u))
         
-        #print(eigenvalues)
+        print(eigenvalues)
         
         for value in eigenvalues[0]:
             if value >= 0:
