@@ -31,7 +31,7 @@ class Lorenz:
     def isStable(self, u):
         eigenvalues = eig(self.df(u))
         
-        print(eigenvalues)
+        #print(eigenvalues)
         
         for value in eigenvalues[0]:
             if value >= 0:
